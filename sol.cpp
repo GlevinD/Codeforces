@@ -8,15 +8,23 @@ using ll = long long;
 #define S second
 typedef vector<int> vi;
 typedef pair<int,int> pi;
+/*
+
+*/
 void solve() {
     test_case{
-        vi arr(7);
-        int sum = 0;
-        f(i,7)cin >> arr[i];
-        sort(arr.begin(),arr.end());
-        f(i,6)sum -= arr[i];
-        sum += arr[6];
-        cout << sum << "\n";
+        int n,k;cin>>n>>k;
+        ll sum = 0;
+        vector<ll> arr(n*k);
+        f(i,n*k)cin>>arr[i];
+        int m = (n + 1) / 2;
+        int step = n - m + 1;
+        int pos = n * k - step;
+        for (int i = 0; i < k; i++) {
+            sum += arr[pos];
+            pos -= step;
+        }
+        cout << sum << '\n';
     }
 }
 int main() {
